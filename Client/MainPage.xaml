@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Client.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Client.ViewModels"
+    x:DataType="viewModels:MainVM">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Button
+                BackgroundColor="#6200EE"
+                Command="{Binding ConnectCommand}"
+                CornerRadius="12"
+                FontSize="18"
+                HeightRequest="50"
+                Text="Connect"
+                TextColor="White" />
+
+            <VerticalStackLayout Spacing="15">
+                <!--  enviar mensajes  -->
+                <Entry
+                    Margin="0,5"
+                    BackgroundColor="#F5F5F5"
+                    FontSize="16"
+                    HeightRequest="50"
+                    Placeholder="Country Code"
+                    Text="{Binding Code}"
+                    TextColor="Black" />
+
+                <Entry
+                    Margin="0,5"
+                    BackgroundColor="#F5F5F5"
+                    FontSize="16"
+                    HeightRequest="50"
+                    Placeholder="Number"
+                    Text="{Binding Number}"
+                    TextColor="Black" />
+
+                <Entry
+                    Margin="0,5"
+                    BackgroundColor="#F5F5F5"
+                    FontSize="16"
+                    HeightRequest="50"
+                    Placeholder="Message"
+                    Text="{Binding Sms}"
+                    TextColor="Black" />
+
+                <Button
+                    BackgroundColor="#6200EE"
+                    Command="{Binding SendCommand}"
+                    CornerRadius="12"
+                    FontSize="18"
+                    HeightRequest="50"
+                    Text="Send"
+                    TextColor="White" />
+            </VerticalStackLayout>
+
+            <Label
+                Margin="0,10"
+                FontSize="16"
+                HorizontalOptions="Center"
+                Text="{Binding ConnectionStatus}"
+                TextColor="#333333" />
+            <Image
+                Margin="0,10"
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                Source="{Binding QrCodeBase64, Converter={StaticResource Base64ToImageSourceConverter}}"
+                WidthRequest="200" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
